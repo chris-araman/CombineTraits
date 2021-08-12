@@ -1,14 +1,22 @@
 name: Continuous Integration
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  pod-lint:
+    name: CocoaPods Lint
+    runs-on: macos-latest
+    steps:
+    - name: Clone
+      uses: actions/checkout@v2
+    - name: Lint
+      run: pod lib lint CombineTraits.podspec
   build-test:
     name: ${{ matrix.name || 'Build & Test' }} (Swift ${{ matrix.swift }}, ${{ matrix.platform }})
     runs-on: macos-${{ matrix.macos || '11' }}
