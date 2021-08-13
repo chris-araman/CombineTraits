@@ -6,10 +6,9 @@ import PackageDescription
 let package = Package(
     name: "CombineTraits",
     platforms: [
-        .iOS("13.0"),
-        .macOS("10.15"),
-        .tvOS("13.0"),
-        .watchOS("6.0"),
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .tvOS(.v13),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -54,3 +53,15 @@ let package = Package(
             dependencies: []),
     ]
 )
+
+#if swift(>=5.4)
+  // XCTest was introduced for watchOS with Swift 5.4, Xcode 12.5, and watchOS 7.4.
+  package.platforms! += [
+    .watchOS("7.4")
+  ]
+#else
+  // Combine requires watchOS 6.
+  package.platforms! += [
+    .watchOS(.v6)
+  ]
+#endif
