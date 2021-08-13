@@ -675,7 +675,7 @@ class MaybePublisherTests: XCTestCase {
                     expectation.fulfill()
                 },
                 receiveValue: { _ in
-                    // Should happen
+                    // Should not happen
                     XCTFail("Unexpected value")
                 })
             withExtendedLifetime(cancellable) {
@@ -862,7 +862,7 @@ class MaybePublisherTests: XCTestCase {
                     expectation.fulfill()
                 },
                 receiveValue: { _ in
-                    // Should happen
+                    // Should not happen
                     XCTFail("Unexpected value")
                 })
             withExtendedLifetime(cancellable) {
