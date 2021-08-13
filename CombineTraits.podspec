@@ -14,17 +14,5 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '13.0'
   s.watchos.deployment_target = '6.0'
 
-  s.subspec 'CombineTraits' do |ct|
-    ct.dependency 'CombineTraits/AsynchronousOperation'
-    ct.dependency 'CombineTraits/CancelBag'
-    ct.source_files = 'Sources/CombineTraits/**/*.swift'
-  end
-
-  s.subspec 'AsynchronousOperation' do |ao|
-    ao.source_files = 'Sources/AsynchronousOperation/**/*.swift'
-  end
-
-  s.subspec 'CancelBag' do |cb|
-    cb.source_files = 'Sources/CancelBag/**/*.swift'
-  end
+  s.source_files = 'Sources/**/*.swift'
 end
