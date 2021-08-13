@@ -3,7 +3,7 @@ CombineTraits [![Swift 5.3](https://img.shields.io/badge/swift-5.3-orange.svg?st
 
 ### Combine Publishers with Guarantees
 
-**Requirements**: iOS 13.0+ / OSX 10.15+ / tvOS 13.0+ / watchOS 6.0+ &bull; Swift 5.3+ / Xcode 12.0+
+**Requirements**: iOS 13+, macOS 10.15+, and tvOS 13+ require Swift 5.1+ or Xcode 11+. watchOS 7.4+ requires Swift 5.4+ or Xcode 12.5+.
 
 ---
 
@@ -89,6 +89,40 @@ let cancellable = refreshPublisher().sinkSingle { result in
     case let .failure(error): ...
     }
 }
+```
+
+## Installation
+
+CombineTraits is available as a Swift Package or as a CocoaPod.
+
+### Swift Package Manager
+
+Add a dependency for CombineExpectations to your [Swift Package](https://swift.org/package-manager/) target:
+
+```diff
+ import PackageDescription
+ 
+ let package = Package(
+     dependencies: [
++        .package(url: "https://github.com/groue/CombineTraits.git", ...)
+     ],
+     targets: [
+         .target(
+             dependencies: [
++                "CombineTraits"
+             ])
+     ]
+ )
+```
+
+### CocoaPods
+
+Add a dependency for CombineExpectations to your [Podfile](https://guides.cocoapods.org/using/the-podfile.html):
+
+```diff
+ target '...' do
++    pod 'CombineTraits', ...
+ end
 ```
 
 [AnyPublisher]: https://developer.apple.com/documentation/combine/anypublisher
