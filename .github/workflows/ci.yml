@@ -9,6 +9,19 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  pod-build-frameworks:
+    name: CocoaPods Build
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        use: ['use_frameworks', 'use_modular_headers']
+    steps:
+    - name: Clone
+      uses: actions/checkout@v2
+    - name: Build
+      working-directory: .github/workflow/fixtures/pod_${{ matrix.use }}
+      run: pod build
   pod-lint:
     name: CocoaPods Lint
     runs-on: macos-latest
